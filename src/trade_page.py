@@ -253,6 +253,136 @@ class TradePage:
         print(notification_title.text)
         return notification_title.text
     
+    def stop_sell_price(self, unit_value, stop_loss_price_value, take_profit_price_value,
+                        trace_input_price_value):
+        time.sleep(2)
+        # Click on buy button
+        sell = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-button-order-sell']")))
+        sell.click()
+
+        # Select order type dropdown
+        order_type = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-dropdown-order-type']")))
+        order_type.click()
+
+        # Select order type limit
+        limit_order_type = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-dropdown-order-type-stop']")))
+        limit_order_type.click()
+
+        # Enter size
+        size = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-input-volume']")))
+        size.click()
+        size.send_keys(unit_value)
+
+        # Enter price
+        trace_input_price = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-input-price']")))
+        trace_input_price.click()
+        trace_input_price.send_keys(trace_input_price_value)
+
+        # Enter stop loss
+        stop_loss = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-input-stoploss-price']")))
+        stop_loss.click()
+        stop_loss.send_keys(stop_loss_price_value)
+
+        # Enter take profit
+        take_profit = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-input-takeprofit-price']")))
+        take_profit.click()
+        take_profit.send_keys(take_profit_price_value)
+
+        # Select expiry
+        expiry_dropdown = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-dropdown-expiry']")))
+        expiry_dropdown.click()
+
+        good_till_cancelled = self.wait.until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, "[data-testid='trade-dropdown-expiry-good-till-day']")))
+        good_till_cancelled.click()
+
+        buy_order = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-button-order']")))
+        buy_order.click()
+
+        # Confirm order
+        confirm_button = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-confirmation-button-confirm']")))
+        confirm_button.click()
+
+        notification_title = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='notification-title']")))
+        print(notification_title.text)
+        return notification_title.text
+    
+    def stop_buy_price(self, unit_value, stop_loss_price_value, take_profit_price_value,
+                       trace_input_price_value):
+        time.sleep(2)
+        # Click on buy button
+        buy = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-button-order-buy']")))
+        buy.click()
+
+        # Select order type dropdown
+        order_type = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-dropdown-order-type']")))
+        order_type.click()
+
+        # Select order type limit
+        limit_order_type = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-dropdown-order-type-stop']")))
+        limit_order_type.click()
+
+        # Enter size
+        size = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-input-volume']")))
+        size.click()
+        size.send_keys(unit_value)
+
+        # Enter price
+        trace_input_price = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-input-price']")))
+        trace_input_price.click()
+        trace_input_price.send_keys(trace_input_price_value)
+
+        # Enter stop loss
+        stop_loss = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-input-stoploss-price']")))
+        stop_loss.click()
+        stop_loss.send_keys(stop_loss_price_value)
+
+        # Enter take profit
+        take_profit = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-input-takeprofit-price']")))
+        take_profit.click()
+        take_profit.send_keys(take_profit_price_value)
+
+        # Select expiry
+        expiry_dropdown = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-dropdown-expiry']")))
+        expiry_dropdown.click()
+
+        good_till_cancelled = self.wait.until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, "[data-testid='trade-dropdown-expiry-good-till-day']")))
+        good_till_cancelled.click()
+
+        buy_order = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-button-order']")))
+        buy_order.click()
+
+        # Confirm order
+        confirm_button = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='trade-confirmation-button-confirm']")))
+        confirm_button.click()
+
+        notification_title = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='notification-title']")))
+        print(notification_title.text)
+        return notification_title.text
+    
     def validate_order_history(self, unit_value, stop_loss_price_value, take_profit_price_value, order_type_value):
         order_history = self.wait.until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='tab-asset-order-type-history']")))
