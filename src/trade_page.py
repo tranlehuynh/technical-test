@@ -690,3 +690,33 @@ class TradePage:
         notification_title = self.wait.until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='notification-title']")))
         return notification_title.text
+    
+    def bulk_closed_open(self):
+        bulk_closed_open = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='bulk-close']")))
+        bulk_closed_open.click()
+
+        closed_all_button = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='dropdown-bulk-close-all']")))
+        closed_all_button.click()
+
+        confirm_button = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='bulk-close-modal-button-submit-all']")))
+        confirm_button.click()
+
+        notification_title = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='notification-title']")))
+        return notification_title.text
+
+    def bulk_closed_delete(self):
+        bulk_closed_open = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='bulk-delete']")))
+        bulk_closed_open.click()
+
+        confirm_button = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='bulk-delete-modal-button-submit']")))
+        confirm_button.click()
+
+        notification_title = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-testid='notification-title']")))
+        return notification_title.text
